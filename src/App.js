@@ -39,9 +39,9 @@ export default function App() {
   return (
     <>
       <h1>Speed Typing Game</h1>
-      <textarea name="textarea" value={textarea} placeholder="Start typing..." onChange={(e) => setTextarea(e.target.value)} />
+      <textarea disabled={!gameState} name="textarea" value={textarea} placeholder="Start typing..." onChange={(e) => setTextarea(e.target.value)} />
       <h4>Amount of time remaining: {timeLeft}</h4>
-      <button onClick={gameStart}>Start Game</button>
+      <button disabled={gameState} onClick={gameStart}>Start Game</button>
       <h1>Word Count: {wordCount}</h1>
     </>
   )
