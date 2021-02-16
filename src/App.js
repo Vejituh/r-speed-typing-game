@@ -29,6 +29,8 @@ export default function App() {
 
   const gameStart = () => {
     if (gameState === false) {
+      setTextarea('')
+      setWordCount(0)
       setGameState(true)
       setTimeLeft(5)
     }
