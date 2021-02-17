@@ -3,7 +3,7 @@ import './App.css'
 
 export default function App() {
   const [textarea, setTextarea] = useState('')
-  const [timeLeft, setTimeLeft] = useState(null);
+  const [timeLeft, setTimeLeft] = useState(0);
   const [gameState, setGameState] = useState(false);
   const [wordCount, setWordCount] = useState(0)
 
@@ -12,7 +12,7 @@ export default function App() {
       setTimeout(() => {
       setTimeLeft(prevTimeLeft => prevTimeLeft -1)
     },1000)
-  } else if(timeLeft === 0){
+  } else if(timeLeft === 0 && gameState === true){
     setGameState(false);
     setWordCount(calculateWordCount(textarea))
   }
