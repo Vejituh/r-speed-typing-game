@@ -19,12 +19,7 @@ export default function App() {
   },[timeLeft])
 
   const calculateWordCount = (words) => {
-    if (words.length > 1){
-    const wordsArr = words.trim().split(" ")
-    return wordsArr.length
-    } else {
-    return 0
-    }
+    return words.length > 1? words.trim().split(" ").length:0
   }
 
   const gameStart = () => {
