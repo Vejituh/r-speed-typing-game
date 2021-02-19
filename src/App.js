@@ -1,39 +1,9 @@
-import React, { useState, useEffect, useRef } from "react"
+import React from "react"
 import './App.css'
+import useWordGame from './hooks/useWordGame'
 
 export default function App() {
-  const [textarea, setTextarea] = useState('')
-  const [timeLeft, setTimeLeft] = useState(0);
-  const [gameState, setGameState] = useState(false);
-  const [wordCount, setWordCount] = useState(0)
-  const textAreaRef = useRef()
-
-  useEffect(() => {
-    if (timeLeft > 0) {
-      setTimeout(() => {
-      setTimeLeft(prevTimeLeft => prevTimeLeft -1)
-    },1000)
-  } else if(timeLeft === 0 && gameState === true){
-    setGameState(false);
-    setWordCount(calculateWordCount(textarea))
-  }
-  },[timeLeft])
-
-  const calculateWordCount = (words) => {
-    return words.length > 1? words.trim().split(" ").length:0
-  }
-
-  const gameStart = () => {
-    if (gameState === false) {
-      setGameState(true)
-      setTextarea('')
-      setWordCount(0)
-      setTimeLeft(5)
-      textAreaRef.current.disabled = false
-      textAreaRef.current.focus()
-    }
-  }
-
+  const {textarea, setTextarea, timeLeft, gameState, wordCount, textAreaRef, gameStart} = useWordGame()
   return (
     <>
       <h1>Speed Typing Game</h1>
